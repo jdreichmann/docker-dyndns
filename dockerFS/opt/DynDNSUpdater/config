@@ -1,0 +1,18 @@
+# Configuration file for DynDNS-Updater
+
+## File in which to store the current (sometimes old) IP-Address
+IP_STORE="/opt/DynDNSUpdater/current-IP.txt"
+
+## HTTP-Address where the answer of /informationEndpoint/php/information.php can be found
+URL_INFO=""
+
+## HTTP(S)-Address where the request to update the IP should be sent to
+URL_UPDATE=""
+## Credentials for the endpoint which is responsible for updating
+HTTP_USER=""
+HTTP_PASS=""
+
+## Which parameters (and parameter names) should be used for the update request
+HOSTNAME_PARAM="hostname"
+HOSTNAME_VALUE=""
+OWN_IP_PARAM="myip"

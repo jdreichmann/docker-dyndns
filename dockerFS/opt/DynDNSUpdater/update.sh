@@ -1,19 +1,14 @@
 #!/bin/bash
 
-# Where the 'old' IP Adress is stored
-IP_STORE="current-ip.txt"
+CONFIG="/opt/DynDNSUpdater/config"
 
-# Where the information endpoint can be found
-URL_INFO=""
-# Where the update should be sent to
-URL_UPDATE=""
-# Which credentials should be used
-HTTP_USER=""
-HTTP_PASS=""
-# Which parameters should be appended to the update url
-HOSTNAME_PARAM="hostname"
-HOSTNAME_VALUE=""
-OWN_IP_PARAM="myip"
+# Source the config file or exit if it cannot be found
+if [[ -e "${CONFIG}" ]]; then
+	. "${CONFIG}"
+elif [[ ! -e "${CONFIG}" ]]; then
+	echo "FATAL Config file ('${CONFIG}') not found"
+	exit 1
+fi;
 
 # Retrieve current IP adress
 CURRENT_IP=$(curl -s $URL_INFO | python3 -c "import sys, json; print(json.load(sys.stdin)['IPv4'])")
