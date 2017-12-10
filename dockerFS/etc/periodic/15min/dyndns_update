@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Set ownership to the relevant folders
+chown -R ${UID}:${GID} /opt/DynDNSUpdater
+chmod o+x /opt/DynDNSUpdater/update.sh
+
+# Run the update script
+su-exec ${UID}:${GID} /opt/DynDNSUpdater/update.sh
